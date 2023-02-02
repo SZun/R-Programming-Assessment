@@ -15,7 +15,7 @@ get_zip_path <- function(base_url,file_name=FILE_NAME) {
 }
 
 # Global Variables
-DATA_DIRECTORY <- "~/Documents/repos/R-Programming-Assessment/data/" # ****Change to your data directory****
+DATA_DIRECTORY <- "~/Documents/repos/R-Programming-Assessment/data/raw_data/" # ****Change to your data directory****
 ZIP_URL = get_zip_path("http://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/")
 ZIP_PATH = get_zip_path(DATA_DIRECTORY)
 
