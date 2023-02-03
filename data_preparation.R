@@ -14,7 +14,7 @@ display_data <- function(data) {
 }
 
 get_xlsx_list <- function(file_name, read_method) {
-  path <- paste(RAW_DATA_DIRECTORY,file_name,sep="")
+  path <- paste(RAW_DATA_DIRECTORY,file_name,".xlsx",sep="")
   list <- read_excel(path)
   return(list)
 }
@@ -28,12 +28,12 @@ get_factors <- function(dates) {
   return(factors)
 }
 
-funds <- get_xlsx_list("Funds.xlsx")
+funds <- get_xlsx_list("Funds")
 # display_data(funds)
-benchmark <- get_xlsx_list("Bmark.xlsx")
+benchmark <- get_xlsx_list("Bmark")
 # display_data(benchmark)
 factors <- get_factors(funds$Date)
 # display_data(factors)
 
 data <- merge(merge(funds,benchmark,by.x = "Date"),factors,by.x = "Date")
-# display_date(data)
+# display_data(data)
