@@ -17,7 +17,7 @@ get_xlsx_list <- function(file_name, read_method) {
   path <- paste(RAW_DATA_DIRECTORY,file_name,".xlsx",sep="")
   list <- read_excel(path)
   list$Date <- as.Date(dates_col, format= "%Y-%m-%d")
-  list[2:ncol(list)] <- lapply(list[2:ncol(list)],function(x) round(x,4))
+  list[2:ncol(list)] <- lapply(list[2:ncol(list)],function(x) round(x*100,2))
   return(list)
 }
 
@@ -46,3 +46,4 @@ factors <- get_factors(funds$Date)
 
 data <- merge(merge(funds,benchmark,by.x = "Date"),factors,by.x = "Date")
 # display_data(data)
+head(data)
