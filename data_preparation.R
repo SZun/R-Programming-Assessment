@@ -16,6 +16,7 @@ display_data <- function(data) {
 get_xlsx_list <- function(file_name, read_method) {
   path <- paste(RAW_DATA_DIRECTORY,file_name,".xlsx",sep="")
   list <- read_excel(path)
+  list[2:ncol(list)] <- lapply(list[2:ncol(list)],function(x) round(x,4))
   return(list)
 }
 
@@ -29,6 +30,7 @@ get_factors <- function(dates) {
 }
 
 funds <- get_xlsx_list("Funds")
+head(funds,10)
 # display_data(funds)
 benchmark <- get_xlsx_list("Bmark")
 # display_data(benchmark)
