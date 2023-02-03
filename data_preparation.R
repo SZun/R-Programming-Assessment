@@ -1,10 +1,15 @@
+# Install tidyverse package
 #install.packages("tidyverse")
+# Import readxl libaray
 library(readxl)
 
+# Global varaibled
 RAW_DATA_DIRECTORY = "./raw_data/"
 
+#Set working directory
 setwd("~/Documents/repos/R-Programming-Assessment/data/")
 
+# Utility method to display data
 display_data <- function(data) {
   head(data)
   tail(data)
@@ -13,6 +18,7 @@ display_data <- function(data) {
   nrow(data)
 }
 
+# Method to read, transform and return Excel file
 get_xlsx_list <- function(file_name, read_method) {
   path <- paste(RAW_DATA_DIRECTORY,file_name,".xlsx",sep="")
   list <- read_excel(path)
@@ -21,12 +27,14 @@ get_xlsx_list <- function(file_name, read_method) {
   return(list)
 }
 
+# Median imputation method for funds NA values
 median_imputation <- function(funds) {
   funds[is.na(funds$Fund2), "Fund2"] <- median(funds[!is.na(funds$Fund2), "Fund2"][[1]])
   funds[is.na(funds$Fund3), "Fund3"] <- median(funds[!is.na(funds$Fund3), "Fund3"][[1]])
   return(funds)
 }
 
+# Method to read, transform and return factors
 get_factors <- function(dates) {
   factors_file_path = paste(RAW_DATA_DIRECTORY,"F-F_Research_Data_Factors.CSV", sep="")
   factors <- read.csv(factors_file_path,header=F)[856:1094,]
@@ -36,14 +44,25 @@ get_factors <- function(dates) {
   return(factors)
 }
 
-funds <- get_xlsx_list("Funds")
-funds <- median_imputation(funds)
-# display_data(funds)
-benchmark <- get_xlsx_list("Bmark")
-# display_data(benchmark)
-factors <- get_factors(funds$Date)
-# display_data(factors)
 
+# Get funds 
+funds <- get_xlsx_list("Funds")
+# Replace NA values
+funds <- median_imputation(funds)
+# Display
+display_data(funds)
+
+# Get Benchmark
+benchmark <- get_xlsx_list("Bmark")
+# Display
+display_data(benchmark)
+
+# Get Factors
+factors <- get_factors(funds$Date)
+# Display
+display_data(factors)
+
+# Merge data
 data <- merge(merge(funds,benchmark,by.x = "Date"),factors,by.x = "Date")
-# display_data(data)
-head(data)
+# Display
+display_data(data)
