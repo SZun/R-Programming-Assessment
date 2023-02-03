@@ -1,26 +1,41 @@
 #install.packages("tidyverse")
-#install.packages("dplyr")
+# install.packages("zoo")
+library(zoo)
 library(readxl)
-library(dplyr)
 
-setwd("~/Documents/repos/R-Programming-Assessment/")
+RAW_DATA_DIRECTORY = "./raw_data/"
 
-funds <- read_excel("./data/raw_data/Funds.xlsx")
-head(funds)
-tail(funds)
-str(funds)
-summary(funds)
+setwd("~/Documents/repos/R-Programming-Assessment/data/")
 
-dates_col <- funds$Date
-dates_col <- as.Date(dates_col, format= "%Y-%m-%d")
+display_data <- function(data) {
+  head(data)
+  tail(data)
+  str(data)
+  summary(data)
+  nrow(data)
+}
 
-banan <- funds[is.na(funds$Fund1) & (dates_col > "1996-01-01" & dates_col < "1998-01-01"),]
-banan
+get_xlsx_list <- function(file_name, read_method) {
+  path <- paste(RAW_DATA_DIRECTORY,file_name,sep="")
+  list <- read_excel(path)
+  return(list)
+}
 
+get_factors <- function(dates) {
+  factors_file_path = paste(RAW_DATA_DIRECTORY,"F-F_Research_Data_Factors.CSV", sep="")
+  factors <- read.csv(factors_file_path,header=F)[856:1070,]
+  row.names(factors) <- NULL
+  colnames(factors) <- c("Date","Mkt-RF","SMB","HML","RF")
+  factors$Date <- dates
+  return(factors)
+}
 
-funds.1997 <- funds[(dates_col > "1996-01-01" & dates_col < "1998-01-01"),]
-median.1997 <- median(c(funds_1997$Fund1,funds_1997$Fund3))
-funds[(dates_col > "1996-01-01" & dates_col < "1998-01-01"),"Fund2"] = median.1997
+# funds <- get_xlsx_list("Funds.xlsx")
+# display_data(funds)
+# 
+# benchmark <- get_xlsx_list("Bmark.xlsx")
+# display_data(benchmark)
 
-funds
+# factors <- get_factors(funds$Date)
+
 
