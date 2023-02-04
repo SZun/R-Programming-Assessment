@@ -19,7 +19,13 @@ calculate_annualized_alpha <- function(linear_regression) {
   return(alpha)
 }
 
-get_alpha_t_stat <- function() {}
+# Method to extract alpha t stat
+get_alpha_t_stat <- function(linear_regression) {
+  # Extract alpha t-stat
+  alpha_t_stat <- summary(linear_regression)$coefficients[1,3]
+  # Return alpha t-stat
+  return(alpha_t_stat)
+}
 
 get_developed_market_beta <- function() {}
 
@@ -45,3 +51,8 @@ get_model_statistics_df <- function() {}
 
 model_stats_df <- get_model_statistics_df()
 model_stats_df
+
+# Scratch
+lr <- get_linear_regression(dataset$Fund1)
+summary(lr)
+get_alpha_t_stat(lr)
