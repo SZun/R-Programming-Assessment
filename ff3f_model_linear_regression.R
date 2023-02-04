@@ -56,7 +56,9 @@ get_adjusted_r_squared <- function(linear_regression) {
 # Method to get data.frame of the models statistics
 get_model_statistics_df <- function() {}
 
+# Save model statistics data.frame
 model_stats_df <- get_model_statistics_df()
+# Display data.frame
 model_stats_df
 
 # Scratch
