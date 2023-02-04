@@ -35,7 +35,7 @@ for(i in 1:nrow(model_stats)){
   
   # Set values
   model_stats[i,column_names[1]] = c("Fund 1", "Fund 2", "Fund 3")[i]
-  model_stats[i,column_names[2]] = alpha_beta_t_stat[1,1] * 12
+  model_stats[i,column_names[2]] = alpha_beta_t_stat[1,1] * 1.2
   model_stats[i,column_names[3]] = alpha_beta_t_stat[1,2]
   model_stats[i,column_names[4]] = alpha_beta_t_stat[2,1]
   model_stats[i,column_names[5]] = alpha_beta_t_stat[2,2]
@@ -43,12 +43,12 @@ for(i in 1:nrow(model_stats)){
   model_stats[i,column_names[7]] = alpha_beta_t_stat[3,2]
   model_stats[i,column_names[8]] = alpha_beta_t_stat[4,1]
   model_stats[i,column_names[9]] = alpha_beta_t_stat[4,2]
-  model_stats[i,column_names[10]] = lr_summary$adj.r.squared
+  model_stats[i,column_names[10]] = lr_summary$adj.r.squared * 1000
 }
 
-# Round values
-model_stats[2:9] <- as.data.frame(lapply(model_stats[,2:9],function(x) round(x,4)))
-model_stats[10] <- round(model_stats[10],5)
+# Round/normalize values
+model_stats[seq(4,8,2)] <- lapply(model_stats[seq(4,8,2)], function(x) x*100)
+model_stats[2:10] <- lapply(model_stats[2:10],function(x) round(x,2))
 
 # Display data.frame
 model_stats
