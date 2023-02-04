@@ -4,6 +4,7 @@ setwd("~/Documents/repos/R-Programming-Assessment/")
 # Import dataset
 dataset <- read.csv("./data/dataset.csv")
 
+# Global variable
 BENCHMARK <- dataset$Bmark
 
 # Method to calculate the annualized ex-post tracking error
@@ -30,17 +31,31 @@ calculate_beta <- function(fund,benchmark=BENCHMARK) {
   return(beta)
 }
 
-get_fund_metrics <- function(fund) {
-  tracking_error <- calculate_annualized_ex_post_tracking_error(fund)
-  information_ratio <- calculate_annualized_information_ratio(fund)
-  beta <- calculate_beta(fund)
-  fund_metrics = c("Tracking Error"=tracking_error,"Information Ratio"=information_ratio,Beta=beta)
-  return(fund_metrics)
+# Method to get data.frame of metrics
+get_metrics_df <- function() {
+  # Create empty metrics data.frame
+  metrics <- data.frame(matrix(ncol = 4, nrow = 3))
+  # Set column names
+  colnames(metrics) <- c("Fund Name", "Tracking Error", "Info Ratio", "Beta")
+  # List of funds
+  funds <- list(dataset$Fund1,dataset$Fund3,dataset$Fund2)
+  
+  for(i in 1:3) {
+    # Set values
+    metrics[i,"Fund Name"] <- c("Fund 1", "Fund 2", "Fund 3")[i]
+    metrics[i,"Tracking Error"] <- calculate_annualized_ex_post_tracking_error(funds[[i]])
+    metrics[i,"Info Ratio"] <- calculate_annualized_information_ratio(funds[[i]])
+    metrics[i,"Beta"] <- calculate_beta(funds[[i]])
+  }
+
+  # Round calculated values
+  metrics[2:4] <- as.data.frame(lapply(metrics[,2:4],function(x) round(x,3)))
+  
+  # Return metrics
+  return(metrics)
 }
 
-metrics <- data.frame(
-    Fund1=get_fund_metrics(dataset$Fund1),
-    Fund2=get_fund_metrics(dataset$Fund2),
-    Fund3=get_fund_metrics(dataset$Fund3)
-  )
+# Save metrics data.frame
+metrics_df <- get_metrics_df()
+# Display metrics data.frame
 metrics

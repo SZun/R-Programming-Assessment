@@ -3,7 +3,7 @@
 # Import readxl libaray
 library(readxl)
 
-# Global varaibled
+# Global varaible
 RAW_DATA_DIRECTORY = "./raw_data/"
 
 #Set working directory
@@ -22,7 +22,7 @@ display_data <- function(data) {
 get_xlsx_list <- function(file_name, read_method) {
   path <- paste(RAW_DATA_DIRECTORY,file_name,".xlsx",sep="")
   list <- read_excel(path)
-  list$Date <- as.Date(dates_col, format= "%Y-%m-%d")
+  list$Date <- as.Date(list$Date, format= "%Y-%m-%d")
   list[2:ncol(list)] <- lapply(list[2:ncol(list)],function(x) round(x*100,2))
   return(list)
 }
