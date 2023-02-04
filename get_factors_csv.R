@@ -9,15 +9,15 @@ FILE_NAME <- "F-F_Research_Data_Factors_CSV"
 # Utility method to get zip file path
 get_zip_path <- function(base_url,file_name=FILE_NAME) {
   # Generate character variable for .zip path
-  path = paste(base_url,file_name,".zip",sep="")
+  path <- paste(base_url,file_name,".zip",sep="")
   # Return .zip path
   return(path)
 }
 
 # Global Variables
 DATA_DIRECTORY <- "~/Documents/repos/R-Programming-Assessment/data/raw_data/" # ****Change to your data directory****
-ZIP_URL = get_zip_path("http://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/")
-ZIP_PATH = get_zip_path(DATA_DIRECTORY)
+ZIP_URL <- get_zip_path("http://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/")
+ZIP_PATH <- get_zip_path(DATA_DIRECTORY)
 
 # Set working directory
 setwd(DATA_DIRECTORY)
