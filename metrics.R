@@ -18,7 +18,7 @@ calculate_annualized_ex_post_tracking_error <- function(fund,benchmark=BENCHMARK
 # Method to calculate annualized information ratio
 calculate_annualized_information_ratio <- function(fund,benchmark=BENCHMARK) {
   # Calculate information ratio
-  information_ratio <- ((mean(fund)-mean(benchmark))/sd(fund-benchmark)) * 12
+  information_ratio <- ((mean(fund)-mean(benchmark))/sd(fund-benchmark)) * 120
   # Return information ratio
   return(information_ratio)
 }
