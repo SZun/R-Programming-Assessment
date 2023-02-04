@@ -10,7 +10,7 @@ setwd("~/Documents/repos/R-Programming-Assessment/data/raw_data/")
 download_url = paste("http://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/",
                      "F-F_Research_Data_Factors_CSV",
                      ".zip",sep="")
-zip_path <- paste(getwd(),"F-F_Research_Data_Factors_CSV",".zip",sep="")
+zip_path <- paste(getwd(),"/F-F_Research_Data_Factors_CSV",".zip",sep="")
 
 # Download .zip
 wget(download_url)
