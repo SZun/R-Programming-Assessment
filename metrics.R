@@ -38,7 +38,7 @@ get_metrics_df <- function() {
   # Set column names
   colnames(metrics) <- c("Fund Name", "Tracking Error", "Info Ratio", "Beta")
   # List of funds
-  funds <- list(dataset$Fund1,dataset$Fund3,dataset$Fund2)
+  funds <- list(dataset$Fund1,dataset$Fund2,dataset$Fund3)
   
   for(i in 1:3) {
     # Set values
@@ -58,4 +58,4 @@ get_metrics_df <- function() {
 # Save metrics data.frame
 metrics_df <- get_metrics_df()
 # Display metrics data.frame
-metrics
+metrics_df
