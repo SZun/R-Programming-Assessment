@@ -11,8 +11,13 @@ get_linear_regression <- function(fund, full_dataset=dataset) {
   # Return linear regression
   return(lr)
 }
-
-get_annualized_alpha <- function() {}
+# Method to calculate annualized alpha from linear regression
+calculate_annualized_alpha <- function(linear_regression) {
+  # Calculate annualized alpha
+  alpha <- linear_regression$coefficients[[1]] * 12
+  # Return alpha
+  return(alpha)
+}
 
 get_alpha_t_stat <- function() {}
 
