@@ -27,17 +27,23 @@ get_alpha_t_stat <- function(linear_regression) {
   return(alpha_t_stat)
 }
 
-get_developed_market_beta <- function() {}
+# Method to calculate developed market beta
+calculate_developed_market_beta <- function() {}
 
-get_developed_market_t_stat <- function() {}
+# Method to calculate developed market t stat
+calculate_developed_market_t_stat <- function() {}
 
-get_developed_size_beta <- function() {}
+# Method to calculate developed size beta
+calculate_developed_size_beta <- function() {}
 
-get_developed_size_t_stat <- function() {}
+# Method to calculate developed size t stat
+calculate_developed_size_t_stat <- function() {}
 
-get_developed_value_beta <- function() {}
+# Method to calculate developed value beta
+calculate_developed_value_beta <- function() {}
 
-get_developed_value_t_stat <- function() {}
+# Method to calculate developed value t stat
+calculate_developed_value_t_stat <- function() {}
 
 # Method to get the adjusted r squared value from the linear regression
 get_adjusted_r_squared <- function(linear_regression) {
@@ -47,6 +53,7 @@ get_adjusted_r_squared <- function(linear_regression) {
   return(adj_r2)
 }
 
+# Method to get data.frame of the models statistics
 get_model_statistics_df <- function() {}
 
 model_stats_df <- get_model_statistics_df()
