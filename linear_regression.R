@@ -27,10 +27,13 @@ get_developed_market_t_stat <- function() {}
 
 get_developed_size_beta <- function() {}
 
-get_developed_value_t_stat <- function() {}
+get_developed_size_t_stat <- function() {}
+
+get_developed_value_beta <- function() {}
 
 get_developed_value_t_stat <- function() {}
 
+# Method to get the adjusted r squared value from the linear regression
 get_adjusted_r_squared <- function(linear_regression) {
   # Get Adjusted R Squared
   adj_r2 <- summary(linear_regression)$adj.r.squared
@@ -42,6 +45,3 @@ get_model_statistics_df <- function() {}
 
 model_stats_df <- get_model_statistics_df()
 model_stats_df
-
-banan <- summary(get_linear_regression(dataset$Fund1))
-banan$adj.r.squared
