@@ -67,6 +67,5 @@ data <- merge(merge(funds,benchmark,by.x = "Date"),factors,by.x = "Date")
 # Display
 display_data(data)
 
-
 # Save data to csv file to data directory
-capture.output(data,file="dataset.csv")
+write.csv(data,file="dataset.csv")
