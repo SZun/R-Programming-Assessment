@@ -7,7 +7,7 @@ library(readxl)
 RAW_DATA_DIRECTORY = "./raw_data/"
 
 #Set working directory
-setwd("~/Documents/repos/R-Programming-Assessment/data/")
+setwd("./data/")
 
 # Utility method to display data
 display_data <- function(data) {

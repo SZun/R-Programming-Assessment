@@ -4,7 +4,7 @@
 library(HelpersMG)
 
 # Set working directory
-setwd("~/Documents/repos/R-Programming-Assessment/data/raw_data/")
+setwd("./data/raw_data/")
 
 # Set download url and .zip path
 download_url = paste("http://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/",

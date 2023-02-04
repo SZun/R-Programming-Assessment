@@ -1,5 +1,5 @@
 # Set working directory
-setwd("~/Documents/repos/R-Programming-Assessment/")
+setwd("./")
 
 # Import dataset
 dataset <- read.csv("./data/dataset.csv")
