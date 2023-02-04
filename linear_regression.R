@@ -31,9 +31,17 @@ get_developed_value_t_stat <- function() {}
 
 get_developed_value_t_stat <- function() {}
 
-get_adjusted_r_squared <- function() {}
+get_adjusted_r_squared <- function(linear_regression) {
+  # Get Adjusted R Squared
+  adj_r2 <- summary(linear_regression)$adj.r.squared
+  # Return Adjusted R Squared
+  return(adj_r2)
+}
 
 get_model_statistics_df <- function() {}
 
 model_stats_df <- get_model_statistics_df()
 model_stats_df
+
+banan <- summary(get_linear_regression(dataset$Fund1))
+banan$adj.r.squared
