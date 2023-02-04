@@ -36,7 +36,7 @@ for(i in 1:nrow(model_stats)){
   # Set values
   model_stats[i,column_names[1]] = c("Fund 1", "Fund 2", "Fund 3")[i]
   model_stats[i,column_names[2]] = alpha_beta_t_stat[1,1] * 1.2
-  model_stats[i,column_names[3]] = alpha_beta_t_stat[1,2]
+  model_stats[i,column_names[3]] = alpha_beta_t_stat[1,2] / 100
   model_stats[i,column_names[4]] = alpha_beta_t_stat[2,1]
   model_stats[i,column_names[5]] = alpha_beta_t_stat[2,2]
   model_stats[i,column_names[6]] = alpha_beta_t_stat[3,1]
