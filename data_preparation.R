@@ -1,13 +1,15 @@
 # Install tidyverse package
-#install.packages("tidyverse")
+install.packages("tidyverse")
 # Import readxl libaray
 library(readxl)
 
-# Global varaible
+# Global variables
+ROOT_DIRECTORY = Sys.getenv("ROOT_DIRECTORY")
 RAW_DATA_DIRECTORY = "./raw_data/"
 
 #Set working directory
-setwd("./data/")
+working_directory = paste(ROOT_DIRECTORY,"data/",sep="")
+setwd(working_directory)
 
 # Utility method to display data
 display_data <- function(data) {

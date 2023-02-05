@@ -1,5 +1,8 @@
+# Global variable
+ROOT_DIRECTORY = Sys.getenv("ROOT_DIRECTORY")
+
 # Set working directory
-setwd("./")
+setwd(ROOT_DIRECTORY)
 
 # Import dataset
 dataset <- read.csv("./data/dataset.csv")
